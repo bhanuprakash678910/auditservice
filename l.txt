@@ -1,0 +1,10 @@
+==
+create: - container create.
+rename: - container rename--> 
+start: - container start.
+====
+(run---> create+rename+start)
+
+
+attach Vs Exec ( commands )
+==============
