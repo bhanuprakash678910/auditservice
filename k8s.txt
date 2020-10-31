@@ -1,0 +1,74 @@
+Labels
+======
+apiVersion: v1
+kind: pod
+metadata:
+  labels:
+     app: mynginx
+  name: mynginx
+spec:
+   containers:
+           - image: nginx
+             name: mynginx
+             ports:
+              - containerPort: 80
+Labels are represented in:-
+
+labels:
+     app: mynginx
+what is label?
+label is key-value pair.
+apiVersion: v1
+kind: ReplicationController
+metadata:
+   name: mynginxrc
+spec:
+   replicas: 3
+   template:
+      metadata:
+          name : nginx
+          labels:
+             app: nginx
+      spec:
+          containers:
+            - name: nginx
+              image: nginx
+              ports:
+               - containerPort: 80
+
+ labels:
+       app: nginx
+
+Selectors
+=========
+Select some of the labels from the nodes.
+
+label selectors.
+=============
+It is a condition to filter some pods among many.
+
+$ kubectl get pods -l app=nginx
+
+app=nginx -->  Equality based Selector
+
+ two types of selectors: equality-based and set-based.
+
+A label selector can be made of multiple requirements which are comma-separated.
+
+ Equality-based requirement
+=======================
+environment = production
+tier != frontend
+environment=production,tier!=frontend
+
+Set-based requiremtns
+====================
+environment in (production, qa)
+tier notin (frontend, backend)
+partition
+!partition
+
+
+
+
+
